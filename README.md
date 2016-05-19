@@ -1,5 +1,5 @@
 # swift-snippets
-A collection of Swift snippets.
+A collection of Swift snippets for Xcode.
 
 ## Installation
 ### Install by script :]
@@ -10,7 +10,7 @@ To add the snippets to Xcode, navigate to the `copy-snippets.swift` script in th
 Restart Xcode and everything should be working :]
 
 ### Install manually :[
-Navigate to `~/Library/Developer/Xcode/UserData/CodeSnippets/` and copy-paste the snippets from the snippets directory into the folder. If the `CodeSnippets` folder doesn't already exist, simply create it.
+Navigate to `~/Library/Developer/Xcode/UserData/CodeSnippets/` and copy-paste the snippets from the snippets directory into the directory. If the `CodeSnippets` directory doesn't already exist, simply create it.
 
 Restart Xcode and everything should be working :]
 
@@ -31,3 +31,6 @@ If you create your own snippets or find improvements to the existing ones, feel 
 Before making a Pull Request, please run the `snippet-to-code.swift` script to make sure the Swift files corresponding to the snippets are up-to-date.
 
 To run the script, navigate to the file in the Terminal and run `./snippet-to-code.swift`.
+
+## Todo
+- [ ] Create a script for copying and renaming new snippets created in Xcode (located in the `CodeSnippets` directory). Use the value from the `IDECodeSnippetCompletionPrefix` key as the snippet's name.
