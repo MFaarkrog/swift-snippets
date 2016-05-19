@@ -8,3 +8,11 @@ Restart Xcode and everything should be working :]
 
 ## Usage
 All snippets start with `mf-` followed by their name. Typing `mf-` will show you all available snippets for your current scope.
+
+## Current Snippets
+- mf-animation-spring
+- mf-ibdesignable-nib
+- mf-mark-header
+- mf-mark-subheader
+- mf-uiviewcontroller-tableview
+- mf-uiviewcontroller
