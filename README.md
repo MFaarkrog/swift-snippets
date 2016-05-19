@@ -34,3 +34,5 @@ To run the script, navigate to the file in the Terminal and run `./snippet-to-co
 
 ## Todo
 - [ ] Create a script for copying and renaming new snippets created in Xcode (located in the `CodeSnippets` directory). Use the value from the `IDECodeSnippetCompletionPrefix` key as the snippet's name.
+- [ ] Add a GIF for usage
+- [ ] Add a section on how to create snippets in Xcode
