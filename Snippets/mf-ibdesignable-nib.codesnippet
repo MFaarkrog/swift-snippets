@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>mf-ibdesignable-nib</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>TopLevel</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>import UIKit
+
+@IBDesignable class &lt;#class-name#&gt;: &lt;#type#&gt; {
+  
+  // MARK: Properties
+  
+  @IBOutlet var view: UIView!
+  
+  
+  // MARK: - Initialazation
+  
+  override init(frame: CGRect) {
+    super.init(frame: frame)
+    xibSetup()
+  }
+  
+  required init?(coder aDecoder: NSCoder) {
+    super.init(coder: aDecoder)
+    xibSetup()
+  }
+  
+  private func xibSetup() {
+    view = loadViewFromNib()
+    view.frame = bounds
+    view.autoresizingMask = [UIViewAutoresizing.FlexibleWidth, UIViewAutoresizing.FlexibleHeight]
+    
+    addSubview(view)
+  }
+  
+  private func loadViewFromNib() -&gt; UIView {
+    let bundle = NSBundle(forClass: self.dynamicType)
+    let nib = UINib(nibName: &lt;#T##String#&gt;, bundle: bundle)
+    let view = nib.instantiateWithOwner(self, options: nil)[0] as! UIView
+    
+    return view
+  }
+  
+}</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>E83078AE-6FFE-4DE9-B004-738C39C1AB31</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Swift</string>
+	<key>IDECodeSnippetTitle</key>
+	<string>IBDesignable from Nib Template</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>
