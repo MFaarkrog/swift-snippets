@@ -3,19 +3,19 @@
 <plist version="1.0">
 <dict>
 	<key>IDECodeSnippetCompletionPrefix</key>
-	<string>mf-mark-subheader</string>
+	<string>ss-mark-header</string>
 	<key>IDECodeSnippetCompletionScopes</key>
 	<array>
 		<string>All</string>
 	</array>
 	<key>IDECodeSnippetContents</key>
-	<string>// MARK: &lt;#subheader#&gt;</string>
+	<string>// MARK: - &lt;#header#&gt;</string>
 	<key>IDECodeSnippetIdentifier</key>
-	<string>85F379B8-C629-46C5-90D8-57579CA583C8</string>
+	<string>3CAD403D-1397-457B-925B-96644C94190D</string>
 	<key>IDECodeSnippetLanguage</key>
 	<string>Xcode.SourceCodeLanguage.Swift</string>
 	<key>IDECodeSnippetTitle</key>
-	<string>MARK Subheader</string>
+	<string>MARK Header</string>
 	<key>IDECodeSnippetUserSnippet</key>
 	<true/>
 	<key>IDECodeSnippetVersion</key>

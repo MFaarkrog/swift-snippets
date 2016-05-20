@@ -3,30 +3,43 @@
 <plist version="1.0">
 <dict>
 	<key>IDECodeSnippetCompletionPrefix</key>
-	<string>mf-animation-spring</string>
+	<string>ss-uiviewcontroller</string>
 	<key>IDECodeSnippetCompletionScopes</key>
 	<array>
-		<string>CodeBlock</string>
+		<string>TopLevel</string>
 	</array>
 	<key>IDECodeSnippetContents</key>
-	<string>UIView.animateWithDuration(
-    &lt;#T##duration: NSTimeInterval##NSTimeInterval#&gt;,
-delay: &lt;#T##NSTimeInterval#&gt;,
-usingSpringWithDamping: &lt;#T##CGFloat#&gt;,
-initialSpringVelocity: &lt;#T##CGFloat#&gt;,
-options: &lt;#T##UIViewAnimationOptions#&gt;,
-animations: {
-  &lt;#code#&gt;
-},
-completion: { finished in
-  &lt;#code#&gt;
-})</string>
+	<string>import UIKit
+
+class &lt;#controller-name#&gt;: UIViewController {
+
+  // MARK: - Properties
+
+
+
+  // MARK: - UIViewController
+
+  override func viewDidLoad() {
+    super.viewDidLoad()
+
+  }
+
+  // MARK: - IBActions
+
+
+
+  // MARK: - Helper Functions
+
+
+
+}
+</string>
 	<key>IDECodeSnippetIdentifier</key>
-	<string>6A437B20-2920-4CB9-A92F-F3997B32FF15</string>
+	<string>BF894795-543A-4065-8C41-7C0840C0DA10</string>
 	<key>IDECodeSnippetLanguage</key>
 	<string>Xcode.SourceCodeLanguage.Swift</string>
 	<key>IDECodeSnippetTitle</key>
-	<string>Spring Animation</string>
+	<string>UIViewController Template</string>
 	<key>IDECodeSnippetUserSnippet</key>
 	<true/>
 	<key>IDECodeSnippetVersion</key>
