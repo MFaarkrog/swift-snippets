@@ -21,13 +21,13 @@ import Foundation
 
 struct Constants {
   static let FileManager = NSFileManager.defaultManager()
-  
+
   static let CurrentPath = FileManager.currentDirectoryPath
   static let SnippetsPath = FileManager.currentDirectoryPath.stringByAppendingString("/snippets")
   static let CodePath = FileManager.currentDirectoryPath.stringByAppendingString("/code")
-  
+
   static let LibraryUrl = FileManager.URLsForDirectory(NSSearchPathDirectory.LibraryDirectory, inDomains: NSSearchPathDomainMask.UserDomainMask).first
-  
+
   static let XcodeSnippetsUrl = LibraryUrl?.URLByAppendingPathComponent("Developer/Xcode/UserData/CodeSnippets")
   static let XcodeSnippetsPath = XcodeSnippetsUrl?.path
 }
@@ -36,7 +36,7 @@ struct Constants {
 // MARK: - Global
 
 class Global {
-  
+
   // Returns the URLs for all codesnippets at a given path
   class func getSnippetURLs(forPath path: String) -> [NSURL]? {
     do {
@@ -45,17 +45,17 @@ class Global {
         documentsUrl,
         includingPropertiesForKeys: nil,
         options: NSDirectoryEnumerationOptions())
-      
+
       // Filter urls so only the snippet urls are present
       let snippetUrls = urls.filter({$0.pathExtension == "codesnippet"})
-      
+
       return snippetUrls
     } catch let error as NSError {
       print(error.localizedDescription)
       return nil
     }
   }
-  
+
   // Opens the code directory
   class func openDirectory(atPath path: String) {
     let showFolder = NSTask()
@@ -63,14 +63,14 @@ class Global {
     showFolder.arguments = [path]
     showFolder.launch()
   }
-  
+
 }
 
 
 // MARK: - SnippetsInstaller
 
 class SnippetInstaller {
-  
+
   // Creates the CodeSnippets Xcode directory
   private func createCodeSnippetsDirectory() {
     guard let directoryUrl = Constants.XcodeSnippetsUrl else { return }
@@ -81,19 +81,19 @@ class SnippetInstaller {
       print(error.localizedDescription)
     }
   }
-  
+
   // Installs all snippets from the repo in Xcode's snippet directory
   func install() {
     print("> Installing all snippets.")
     print("-------------------------")
-    
+
     guard let destinationPath = Constants.XcodeSnippetsPath else { return }
-    
+
     // Check of the CodeSnippets directory currently exist, else create it
     if !Constants.FileManager.fileExistsAtPath(destinationPath) {
       createCodeSnippetsDirectory()
     }
-    
+
     guard let snippetUrls = Global.getSnippetURLs(forPath: Constants.SnippetsPath) else { return }
     for url in snippetUrls {
       guard // Get dictionary to copy, filename of snippet, and create final path
@@ -103,23 +103,23 @@ class SnippetInstaller {
       snippetDictionary.writeToFile(path, atomically: true)
       print("> Copying `\(fileName)` to Xcode's CodeSnippets.")
     }
-    
+
     if let path = Constants.XcodeSnippetsPath {
       Global.openDirectory(atPath: path)
     }
-    
+
     print("-------------------------")
     print("> All snippets installed.")
     print("> Be sure to restart Xcode before trying them out.")
   }
-  
+
 }
 
 
 // MARK: - FileIO
 
 class FileIO {
-  
+
   // Saves content at a given filepath
   class func saveFile(atPath path: String, withContent content: String) {
     do {
@@ -129,14 +129,14 @@ class FileIO {
       print(error.localizedDescription)
     }
   }
-  
+
 }
 
 
 // MARK: - SnippetConverter
 
 class SnippetConverter {
-  
+
   // Creates swift files for all .codesnippet files in the /snippets directory
   func createSwiftFilesForSnippets() {
     // Get Urls for all code snippets
@@ -148,31 +148,31 @@ class SnippetConverter {
       // Get data for file
       if let prefix = content?.objectForKey("IDECodeSnippetCompletionPrefix"),
         let code = content?.objectForKey("IDECodeSnippetContents") as? String {
-        
+
         let filePath = Constants.CodePath.stringByAppendingString("/\(prefix).swift")
         FileIO.saveFile(atPath: filePath, withContent: code)
       }
     }
   }
-  
+
   func convert() {
     print("Converting snippets to Swift files.")
     print("-------------------------")
-    
+
     createSwiftFilesForSnippets()
     Global.openDirectory(atPath: Constants.CodePath)
-    
+
     print("-------------------------")
     print("All snippets converted to code.")
   }
-  
+
 }
 
 
 // MARK: - SnippetsMerger
 
 class SnippetMerger {
-  
+
   // Opens the snippets directory
   private func openSnippetDirectory() {
     let showFolder = NSTask()
@@ -180,12 +180,12 @@ class SnippetMerger {
     showFolder.arguments = [Constants.SnippetsPath]
     showFolder.launch()
   }
-  
+
   // Merges all Xcode snippets into the snippets directory
   func merge() {
     print("> Merging all Xcode snippets with snippets directory.")
     print("-------------------------")
-    
+
     guard
       let sourcePath = Constants.XcodeSnippetsPath,
       let snippetUrls = Global.getSnippetURLs(forPath: sourcePath) else { return }
@@ -198,43 +198,47 @@ class SnippetMerger {
       snippetDictionary.writeToFile(filePath, atomically: true)
       print("> Merged snippet `\(name)` to snippets directory.")
     }
-    
+
     Global.openDirectory(atPath: Constants.SnippetsPath)
-    
+
     print("-------------------------")
     print("> All snippets merged.")
   }
-  
+
 }
 
 
 // MARK: - Main
 
 func printHelp() {
-  print("Use `-i` or `-install` to install code snippets in Xcode.")
-  print("Use `-c` or `-convert` to convert code snippets into Swift files.")
-  print("Use `-m` or `-merge` to merge code snippets from Xcode's snippet directory into this repo.")
+  print("Use `-i` or `--install` to install code snippets in Xcode.")
+  print("Use `-c` or `--convert` to convert code snippets into Swift files.")
+  print("Use `-m` or `--merge` to merge code snippets from Xcode's snippet directory into this repo.")
 }
 
-func main(arguements args: [String]) {
+func main(arguments args: [String]) {
   guard args.count > 1 else {
     print("No arguement applied to call.")
     printHelp()
     return
   }
-  
-  switch args[1] {
-  case "-i", "-install":
-    SnippetInstaller().install()
-  case "-c", "-convert":
-    SnippetConverter().convert()
-  case "-m", "-merge":
-    SnippetMerger().merge()
-  default:
-    print("Invalid argumenet.")
-    printHelp()
+
+  for (index, arg) in args.enumerate() {
+    if index > 0 { // Throw away first argument (name of script)
+      switch arg {
+      case "-i", "--install":
+        SnippetInstaller().install()
+      case "-c", "--convert":
+        SnippetConverter().convert()
+      case "-m", "--merge":
+        SnippetMerger().merge()
+      default:
+        print("Invalid argumenet.")
+        printHelp()
+      }
+    }
   }
 }
 
 // Starts the script
-main(arguements: Process.arguments)
+main(arguments: Process.arguments)
