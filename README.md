@@ -5,7 +5,7 @@ A collection of Swift snippets for Xcode.
 ### Install by script :]
 To add the snippets to Xcode, navigate to the directory with `scripts.swift` in the Terminal and type in `./scripts.swift --install`.
 
-*Please note that this will override any existing snippets with the same name. E.g. `s-mark-header`.*
+*Please note that this will override any existing snippets with the same name. E.g. `ss-mark-header`.*
 
 Restart Xcode and everything should be working :]
 
