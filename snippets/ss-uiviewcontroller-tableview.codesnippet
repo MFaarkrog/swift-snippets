@@ -55,7 +55,9 @@ extension &lt;#class-name#&gt;: UITableViewDataSource {
   }
 
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -&gt; UITableViewCell {
-    &lt;#code#&gt;
+    let cell = tableView.dequeueReusableCellWithIdentifier(&lt;#identifier#&gt;, forIndexPath: indexPath) as! &lt;#CellType#&gt;
+    
+    return cell
   }
 
 }</string>

@@ -44,7 +44,9 @@ extension <#class-name#>: UITableViewDataSource {
   }
 
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-    <#code#>
+    let cell = tableView.dequeueReusableCellWithIdentifier(<#identifier#>, forIndexPath: indexPath) as! <#CellType#>
+    
+    return cell
   }
 
 }

@@ -19,9 +19,14 @@ All snippets start with `ss` (for swift snippets) followed by their name. Typing
 
 ### Current Snippets
 - ss-animation-spring
+- ss-comment-function
+- ss-ibaction-touch
 - ss-ibdesignable-nib
+- ss-ibinspectable
+- ss-iboutlet
 - ss-mark-header
-- ss-mark-subheaderI
+- ss-mark-subheader
+- ss-uiviewcontroller-comments
 - ss-uiviewcontroller-tableview
 - ss-uiviewcontroller
 
@@ -37,7 +42,7 @@ Before making a Pull Request, please also run the `./scripts.swift --convert` sc
 - `./scripts.swift -c` or `./scripts.swift --convert` to convert snippets into Swift files
 - `./scripts.swift -m` or `./scripts.swift --merge` to merge Xcode snippets with the ones in this repo
 
-- *Note:* You can chain the commands together. For example, if you want to do a merge followed by a convert, simply type in `./scripts.swift -m -c`
+*Note:* You can chain the commands together. For example, if you want to do a merge followed by a convert, simply type in `./scripts.swift -m -c`
 
 ## Todo
 - [ ] Add a GIF for usage

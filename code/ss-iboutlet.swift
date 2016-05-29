@@ -1,0 +1,1 @@
+@IBOutlet weak var <#name#>: <#type#>!
