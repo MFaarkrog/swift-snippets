@@ -47,4 +47,4 @@ Before making a Pull Request, please also run the `./scripts.swift --convert` sc
 ## Todo
 - [ ] Add a GIF for usage.
 - [ ] Add a section on how to create snippets in Xcode.
-- [ ] Make the `--convert` script automatically update the `README.md` file with new scripts.
+- [ ] Make the `--convert` script automatically update the `README.md` file with new snippets.
