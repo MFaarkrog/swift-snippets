@@ -45,5 +45,6 @@ Before making a Pull Request, please also run the `./scripts.swift --convert` sc
 *Note:* You can chain the commands together. For example, if you want to do a merge followed by a convert, simply type in `./scripts.swift -m -c`
 
 ## Todo
-- [ ] Add a GIF for usage
-- [ ] Add a section on how to create snippets in Xcode
+- [ ] Add a GIF for usage.
+- [ ] Add a section on how to create snippets in Xcode.
+- [ ] Make the `--convert` script automatically update the `README.md` file with new snippets.
